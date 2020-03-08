@@ -1,0 +1,2 @@
+rootProject.name='wind-okgo'
+include ':app', ':im-okgo'
