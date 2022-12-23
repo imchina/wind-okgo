@@ -16,26 +16,29 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.8.1'
 }
 
-uploadArchives { //新增 ，因为Android Studio gradle 支持maven插件，所以可以添加此task
-    configuration = configurations.archives
-    repositories {
-        mavenDeployer {
+//uploadArchives { //新增 ，因为Android Studio gradle 支持maven插件，所以可以添加此task
+//    configuration = configurations.archives
+//    repositories {
+//        mavenDeployer {
+//
+//            snapshotRepository(url: 'http://mvn.m2jm.com:8081/repository/maven-snapshots/') {
+//                authentication(userName: 'admin', password: 'lpf505541778')
+//            }
+//
+//            repository(url: 'http://mvn.m2jm.com:8081/repository/maven-releases/') {
+//                authentication(userName: 'admin', password: 'lpf505541778')
+//            }
+//
+//            pom.project {
+//                version '1.0.0' //版本名称 上传是不能和之前的一样，否则上传失败
+//                artifactId 'okgo'  //和前面网站上填写的一样
+//                groupId 'com.jz.android'  //和前面网站上填写的一样
+//                packaging 'aar' //填写aar
+//                description '初始化' //更新描述
+//            }
+//        }
+//    }
+//}
 
-            snapshotRepository(url: 'http://mvn.m2jm.com:8081/repository/maven-snapshots/') {
-                authentication(userName: 'admin', password: 'lpf505541778')
-            }
 
-            repository(url: 'http://mvn.m2jm.com:8081/repository/maven-releases/') {
-                authentication(userName: 'admin', password: 'lpf505541778')
-            }
-
-            pom.project {
-                version '1.0.0' //版本名称 上传是不能和之前的一样，否则上传失败
-                artifactId 'okgo'  //和前面网站上填写的一样
-                groupId 'com.jz.android'  //和前面网站上填写的一样
-                packaging 'aar' //填写aar
-                description '初始化' //更新描述
-            }
-        }
-    }
-}
+apply from: "${getRootDir().absolutePath}/gradles/publish-maven.gradle"
